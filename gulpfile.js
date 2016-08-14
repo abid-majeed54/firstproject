@@ -12,5 +12,20 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.sass('app.scss')
+        .styles([
+            'libs/bootstrap.min.css',
+            'libs/font-awesome.min.css',
+            'libs/morris.css',
+            'libs/sb-admin.css'
+        ],'./public/css/libs.css')
+
+        .scripts([
+
+            'libs/jquery.js',
+            'libs/scripts.js',
+            'libs/bootstrap.min.js'
+
+        ], './public/js/libs.js')
 });
+
