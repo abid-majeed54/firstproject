@@ -6,17 +6,10 @@
 
     <h1>Create Users</h1>
 
+    <div class="row">
 
-    @if(count($errors)> 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{!! $error !!}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
+        @include('includes.form_error')
+    </div>
 
    {!! Form::open(['method'=> 'POST', 'action'  => 'AdminUsersController@store', 'files'=>true])  !!}
             <div class="form-group">
@@ -44,7 +37,7 @@
                 {!! Form::file('photo_id', ['class' =>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::submit('Create Post', ['class' =>'btn btn-primary']) !!}
+                {!! Form::submit('Create User', ['class' =>'btn btn-primary']) !!}
             </div>
     {!! Form::close()  !!}
 

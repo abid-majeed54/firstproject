@@ -1,8 +1,11 @@
 @extends('layouts.admin')
 @section('content')
 
-    <h1>Users</h1>
+    @if(Session::has('user_deleted'))
+    <p class="bg-danger">{{session('user_deleted')}}</p>
 
+    @endif
+    <h1>Users</h1>
 
     <table class="table">
         <thead>
@@ -22,10 +25,11 @@
         @if($users)
 
             @foreach($users as $user)
+
           <tr>
             <td>{{$user->id}}</td>
             <td><a href="{{route('admin.users.edit' , $user->id)}}">{{$user->name}}</a></td>
-            <td><img src="{{URL::asset($user->photo ? $user->photo->file : 'http://placehold.it/150x150')}}" alt=""></td>
+            <td><img src="{{URL::asset($user->photo ? $user->photo->file : 'no photo')}}" alt=""></td>
             <td>{{$user->email}}</td>
             <td>{{$user->role->name}}</td>
             <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
